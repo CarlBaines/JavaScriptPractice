@@ -7,6 +7,16 @@ let kendrickImg = document.getElementById("kendrick_img");
 let isDrakeOhHellNah = true;
 let kendrickVisible = true;
 
+const randomSongBtn = document.getElementById("random-song");
+let randomSongCover = document.getElementById("random-song-cover");
+let randomTxt = document.getElementById("random-txt");
+
+const songs = ["NOKIA - Drake", "Not Like Us - Kendrick",
+    "Headlines - Drake", "HUMBLE - Kendrick",
+    "God's Plan - Drake", "TV Off - Kendrick"
+]
+
+randomSongBtn.addEventListener("click", displayRandomSongAndDisplayCover);
 
 function changeText(){
     const userInput = prompt("Change the heading text: ");
@@ -39,10 +49,12 @@ function changeDrake(){
     if(isDrakeOhHellNah){
         // Drake changes to oh yeah.
         drakeImg.src = 'assets/drake_oh_yeah.png';
+        drakeBtn.textContent = "Oh Hell Nah";
     }
     else{
         // Drake reverts back to oh hell nah.
         drakeImg.src = 'assets/drake_hell_nah.png';
+        drakeBtn.textContent = "Hell Yeah";
     }
 }
 
@@ -56,5 +68,37 @@ function clickedSusBtn(){
     else{
         kendrickImg.style.display = "none";
         kendrickBtn.textContent = "Click this button";
+    }
+}
+
+function displayRandomSongAndDisplayCover(){
+    // Choose a random song from the songs array.
+    const randomIndex = Math.floor(Math.random() * songs.length);
+    const randomSong = songs[randomIndex];
+    randomTxt.textContent = randomSong;
+    randomSongCover.style.display = "block";
+    // Display the cover for the randomly chosen song.
+    switch(randomIndex){
+        case 0:
+            // Change image of random song cover, also display the song cover.
+            randomSongCover.src = 'assets/somesexysongs4u_cover.png';
+            break;
+        case 1:
+            randomSongCover.src = 'assets/nlu_cover.png';
+            break;
+        case 2:
+            randomSongCover.src = 'assets/take_care_cover.jpg';
+            break;
+        case 3:
+            randomSongCover.src = 'assets/damn_cover.jpg';
+            break;
+        case 4:
+            randomSongCover.src = 'assets/scorpion_cover.jpg';
+            break;
+        case 5:
+            randomSongCover.src = 'assets/gnx_cover.png';
+            break;
+        default:
+            break;
     }
 }
