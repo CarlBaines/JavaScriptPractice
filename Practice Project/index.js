@@ -1,20 +1,42 @@
+// DOM elements
 let headingText = document.getElementById("title");
 const drakeBtn = document.getElementById("changeDrakeBtn");
 const kendrickBtn = document.getElementById("clickThisBtn");
 let drakeImg = document.getElementById("drake_img");
 let kendrickImg = document.getElementById("kendrick_img");
-
-let isDrakeOhHellNah = true;
-let kendrickVisible = true;
-
 const randomSongBtn = document.getElementById("random-song");
 let randomSongCover = document.getElementById("random-song-cover");
 let randomTxt = document.getElementById("random-txt");
+let rapperDescription = document.getElementById("rapper-description");
 
+// Songs array used to select a random song.
 const songs = ["NOKIA - Drake", "Not Like Us - Kendrick",
     "Headlines - Drake", "HUMBLE - Kendrick",
     "God's Plan - Drake", "TV Off - Kendrick"
 ]
+
+// Object Instantiation
+const drake = {
+    firstName: "Aubrey",
+    lastName: "Graham",
+    age: 38,
+    displayDescription : function(){
+        return "This is " + this.firstName + " " + this.lastName + "<br> Age: " + this.age;
+    }
+};
+
+const kendrick = {
+    firstName: "Kendrick",
+    lastName: "Duckworth",
+    age: 37,
+    displayDescription : function(){
+        return "This is " + this.firstName + " " + this.lastName + "<br> Age: " + this.age;
+    }
+};
+
+// Flags
+let isDrakeOhHellNah = true;
+let kendrickVisible = true;
 
 randomSongBtn.addEventListener("click", displayRandomSongAndDisplayCover);
 
@@ -46,6 +68,8 @@ function changeDrake(){
     // Toggles flip of images on clicks.
     isDrakeOhHellNah = !isDrakeOhHellNah;
 
+    rapperDescription.innerHTML = drake.displayDescription();
+
     if(isDrakeOhHellNah){
         // Drake changes to oh yeah.
         drakeImg.src = 'assets/drake_oh_yeah.png';
@@ -64,10 +88,12 @@ function clickedSusBtn(){
     if(kendrickVisible){
         kendrickImg.style.display = "block";
         kendrickBtn.textContent = "Unjumpscare";
+        rapperDescription.innerHTML = kendrick.displayDescription();
     }
     else{
         kendrickImg.style.display = "none";
         kendrickBtn.textContent = "Click this button";
+        rapperName.textContent = "";
     }
 }
 
